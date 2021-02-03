@@ -47,11 +47,11 @@ h2 {
   font-weight: 500;
 }
 
-.pl.pl--gain {
+.pl--gain {
   color: #bcec37;
 }
 
-.pl.pl--loss {
+.pl--loss {
   color: #ea1c6b;
 }
 
@@ -75,7 +75,27 @@ button, .button-text {
   color: #ea1c6b;
 }
 
+.border-button {
+  width: 100%;
+  padding: 16px;
+  background: #000421;
+  border: 1px solid #717eeb;
+  border-radius: 4px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.border-button:hover {
+  -webkit-filter: brightness(1.5);
+          filter: brightness(1.5);
+}
+
 body {
   background: #000421;
+}
+
+span {
+  display: block;
 }
 /*# sourceMappingURL=main.css.map */

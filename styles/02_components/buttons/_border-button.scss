@@ -1,0 +1,12 @@
+.border-button{
+    width: 100%;
+    padding: 16px;
+    background: $bg;
+    border: 1px solid $purple;
+    border-radius: 4px;
+    transition: 0.2s;
+    cursor: pointer;
+    &:hover{
+        filter: brightness(1.5);
+    }
+}

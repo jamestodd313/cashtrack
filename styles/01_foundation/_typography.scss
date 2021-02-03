@@ -35,10 +35,10 @@ h2{
 .pl{
     font-size: 12px;
     font-weight: 500; //medium
-    &.pl--gain{
+    &--gain{
         color: $green;
     }
-    &.pl--loss{
+    &--loss{
         color: $red;
     }
 }
