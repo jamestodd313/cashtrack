@@ -1,0 +1,60 @@
+*{ font-family: 'Roboto', sans-serif; }
+body, p{
+    font-size: 16px;
+    font-weight: 400; // regular
+    line-height: calc(16px * 1.618);
+    color: $light-grey;
+}
+h1{
+    color: white;
+    font-size: 32px;
+    font-weight: 900; // black
+}
+h2{
+    color: $white;
+    font-size: 24px;
+    font-weight: 900; // black
+}
+.bottom-link{
+    font-size: 16px;
+    font-weight: 400; //regular
+    color: $purple;
+    text-decoration: none;
+}
+.filter-option{
+    font-size: 20px;
+    &--active{
+        color: $purple;
+        font-weight: 500; // medium
+    }
+    &--inactive{
+        color: $dark-grey;
+        font-weight: 300; // light
+    }
+}
+.pl{
+    font-size: 12px;
+    font-weight: 500; //medium
+    &.pl--gain{
+        color: $green;
+    }
+    &.pl--loss{
+        color: $red;
+    }
+}
+button, .button-text{
+    font-size: 12px;
+    font-weight: 900; //black
+    text-transform: uppercase;
+    color: $purple;
+}
+.highlight{
+    font-size: 20px;
+    font-weight: 500; // medium
+    &--gain{
+        color: $green;
+    }
+    &--loss{
+        color: $red;
+    }
+}

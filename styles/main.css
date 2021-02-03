@@ -1,0 +1,81 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+body, p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: calc(16px * 1.618);
+  color: #e2e2e2;
+}
+
+h1 {
+  color: white;
+  font-size: 32px;
+  font-weight: 900;
+}
+
+h2 {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.bottom-link {
+  font-size: 16px;
+  font-weight: 400;
+  color: #717eeb;
+  text-decoration: none;
+}
+
+.filter-option {
+  font-size: 20px;
+}
+
+.filter-option--active {
+  color: #717eeb;
+  font-weight: 500;
+}
+
+.filter-option--inactive {
+  color: #757575;
+  font-weight: 300;
+}
+
+.pl {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.pl.pl--gain {
+  color: #bcec37;
+}
+
+.pl.pl--loss {
+  color: #ea1c6b;
+}
+
+button, .button-text {
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #717eeb;
+}
+
+.highlight {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.highlight--gain {
+  color: #bcec37;
+}
+
+.highlight--loss {
+  color: #ea1c6b;
+}
+
+body {
+  background: #000421;
+}
+/*# sourceMappingURL=main.css.map */
