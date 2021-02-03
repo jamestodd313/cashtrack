@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { BorderButton } from '../components/buttons/BorderButton'
+import { NavLink } from '../components/navbar/NavLink'
 
 export default function Home() {
   return (
@@ -19,6 +20,11 @@ export default function Home() {
 
       <h1>Components</h1>
       <BorderButton text="this is a button" click={e=> console.log('hey')}/>
+      <NavLink link="home"/>
+      <NavLink link="cash"/>
+      <NavLink link="investing"/>
+      <NavLink link="account"/>
+      <NavLink link=""/>
     </>
   )
 }
