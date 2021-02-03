@@ -3,9 +3,10 @@
 @import '02_components/02_components';
 // @import '03_pages/03_pages';
 
-
 body{
     background: $bg;
+    margin: 0px;
+    padding: 16px;
 }
 span{
     display: block;

@@ -1,0 +1,37 @@
+.overview-table{
+    width: 100%;
+    thead, thead tr{
+        display: block;
+        max-height: 0px;
+        overflow: hidden;
+        margin:0;
+        padding:0;
+    }
+    .table-head{
+        text-align: left;
+        &--invisible{
+            display: inline-block;
+            max-height: 0px;
+            overflow: hidden;
+        }
+    }
+    .table-row{
+        td{
+            padding: 8px 0px;
+        }
+        .table-left{
+            span{
+                display: inline-block;
+                margin-right: 8px;
+            }
+        }
+        .table-right{
+            text-align: right;
+        }
+    }
+    tfoot{
+        button{
+            margin-top: 16px;
+        }
+    }
+}

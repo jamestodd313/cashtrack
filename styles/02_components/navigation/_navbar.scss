@@ -1,0 +1,24 @@
+.main-nav{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    width: 100vw;
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+    background-color: $nav-bg;
+    padding: 0px 16px;
+    @media screen and (min-width: 992px){
+        top:0;
+        width: 80px;
+        height: 100vh;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        padding-top: 72px;
+        .nav-link{
+            margin-bottom: 40px;
+        }
+    }
+}

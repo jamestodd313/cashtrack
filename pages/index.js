@@ -1,30 +1,23 @@
 import Head from 'next/head'
 import { BorderButton } from '../components/buttons/BorderButton'
-import { NavLink } from '../components/navbar/NavLink'
+import { OverviewTable } from '../components/data-display/OverviewTable'
+import { TableSection } from '../components/data-display/TableSection'
+import { Navbar } from '../components/navigation/Navbar'
+import { NavLink } from '../components/navigation/NavLink'
 
 export default function Home() {
   return (
     <>
-      <h1>Typography</h1>
-      body
-      <h1>heading 1</h1>
-      <h2>heading 2</h2>
-      <a href="#" className="bottom-link">+ Bottom Link</a>
-      <span className="filter-option filter-option--active">active</span>
-      <span className="filter-option filter-option--inactive">inactive</span>
-      <span className="button-text">button</span>
-      <span className="pl pl--gain">gain</span>
-      <span className="pl pl--loss">loss</span>
-      <span className="highlight highlight--gain">gain</span>
-      <span className="highlight highlight--loss">loss</span>
+      <main>
+        <h1>Tables</h1>
+        <TableSection/>
+        <TableSection/>
+        <TableSection/>
+      </main>
 
-      <h1>Components</h1>
-      <BorderButton text="this is a button" click={e=> console.log('hey')}/>
-      <NavLink link="home"/>
-      <NavLink link="cash"/>
-      <NavLink link="investing"/>
-      <NavLink link="account"/>
-      <NavLink link=""/>
+
+      <Navbar/>
+
     </>
   )
 }

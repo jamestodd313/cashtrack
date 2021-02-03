@@ -1,0 +1,29 @@
+.nav-link{
+    display: inline-block;
+    @include size(54px, 54px);
+    display: inline-grid;
+    place-content: center;
+    .nav-icon{
+        height: 29px;
+        width: auto;
+        stroke: $grey; 
+        transition: 0.2s;
+        pointer-events: none;
+    }
+    &:hover{
+        .nav-icon{
+            stroke: $white;
+        }
+    }
+    &--active{
+        .nav-icon{
+            stroke: $purple;
+        }
+        &:hover{
+            .nav-icon{
+                stroke: $purple;
+            }
+        }
+    }
+
+}

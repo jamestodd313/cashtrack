@@ -20,6 +20,9 @@ h2{
     font-weight: 400; //regular
     color: $purple;
     text-decoration: none;
+    &:hover, &:focus{
+        text-decoration: underline;
+    }
 }
 .filter-option{
     font-size: 20px;
@@ -57,4 +60,8 @@ button, .button-text{
     &--loss{
         color: $red;
     }
+}
+table .new-items{
+    font-weight: 900;
+    color: $blue;
 }
