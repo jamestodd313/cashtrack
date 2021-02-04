@@ -1,0 +1,31 @@
+.graph-container{
+    position:relative;
+    padding-top: 62px;
+    .graph-header{
+        position: absolute;
+        top: 0;
+        .graph-title{
+            margin-bottom: 0px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+    .indicators{
+        display: flex;
+        justify-content: center;
+        margin-top: 16px;
+        .indicator{
+            display: block;
+            @include size(12px, 12px);
+            padding: 0;
+            border-radius: 50%;
+            border: none;
+            outline: none;
+            margin: 8px;
+            background: $dark-grey;
+            &--active{
+                background: $purple;
+            }
+        }
+    }
+}

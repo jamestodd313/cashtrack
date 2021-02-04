@@ -1,7 +1,8 @@
-import { BorderButton } from "../buttons/BorderButton"
+import { BorderButton } from "../../buttons/BorderButton"
 import { TableRow } from "./TableRow"
 
-export const OverviewTable = () => {
+export const OverviewTable = ({tableData}) => {
+    // console.log(tableData)
     return (
         <table className="overview-table">
             <thead>
@@ -11,14 +12,12 @@ export const OverviewTable = () => {
                 </tr>
             </thead>
             <tbody>
-                <TableRow transactions="1" item="Direct Deposit" value="9,650.87" change="9,650.87"/>
-                <TableRow transactions="0" item="Cash/Check Deposits" value="9,650.87" change="9,650.87"/>
-                <TableRow transactions="0" item="Transfers" value="9,650.87" change="9,650.87"/>
+                {tableData.items.map(row=> <TableRow key={`${row.item}-${Math.floor(Math.random() * 52387 * Math.floor(Math.random() * 23324))}`} transactions={row.transactions} item={row.item} value={row.value} change={row.change}/>)}
             </tbody>
             <tfoot>
                 <tr>
                     <td colSpan="2">
-                        <BorderButton text="See More" link="/"/>
+                        <BorderButton text="See Transactions" link="/"/>
                     </td>
                 </tr>
             </tfoot>

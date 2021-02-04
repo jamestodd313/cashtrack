@@ -65,3 +65,14 @@ table .new-items{
     font-weight: 900;
     color: $blue;
 }
+
+.time-option{
+    color: $grey;
+    font-weight: 200;
+    font-size: 16px;
+    text-transform: capitalize;
+    &--selected{
+        color: $purple;
+        font-weight: 900;
+    }
+}

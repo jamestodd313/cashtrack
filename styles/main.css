@@ -84,15 +84,38 @@ table .new-items {
   color: #aff3ff;
 }
 
+.time-option {
+  color: #c4c4c4;
+  font-weight: 200;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.time-option--selected {
+  color: #717eeb;
+  font-weight: 900;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
+main {
+  padding: 0px 16px;
+}
+
 @media screen and (min-width: 992px) {
   main {
     margin-left: 80px;
+    padding: 16px 48px;
   }
+}
+
+main::after {
+  content: "";
+  display: block;
+  min-height: 40px;
 }
 
 .border-button {
@@ -242,10 +265,70 @@ table .new-items {
   margin-top: 16px;
 }
 
+.graph-container {
+  position: relative;
+  padding-top: 62px;
+}
+
+.graph-container .graph-header {
+  position: absolute;
+  top: 0;
+}
+
+.graph-container .graph-header .graph-title {
+  margin-bottom: 0px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.graph-container .indicators {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 16px;
+}
+
+.graph-container .indicators .indicator {
+  display: block;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  margin: 8px;
+  background: #757575;
+}
+
+.graph-container .indicators .indicator--active {
+  background: #717eeb;
+}
+
+.time-period-selector {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 24px;
+}
+
+.time-period-selector .time-option {
+  background: none;
+  border: none;
+}
+
 body {
   background: #000421;
   margin: 0px;
-  padding: 16px;
 }
 
 span {

@@ -1,0 +1,10 @@
+.time-period-selector{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-top: 24px;
+    .time-option{
+        background: none;
+        border: none;
+    }
+}
