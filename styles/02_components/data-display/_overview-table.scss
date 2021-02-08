@@ -1,11 +1,21 @@
 .overview-table{
     width: 100%;
+    height: 100%;
     thead, thead tr{
         display: block;
         max-height: 0px;
         overflow: hidden;
         margin:0;
         padding:0;
+    }
+    tbody{
+        @media screen and (min-width: 768px){
+            margin-top: 16px;
+            display: flex;
+            justify-content: flex-start;
+            flex-flow: column nowrap;
+            width: 100%;
+        }
     }
     .table-head{
         text-align: left;
@@ -18,6 +28,8 @@
     .table-row{
         td{
             padding: 8px 0px;
+            width: 100%;
+
         }
         .table-left{
             span{
@@ -32,6 +44,8 @@
     tfoot{
         button{
             margin-top: 16px;
+            @media screen and (min-width: 992px){
+            }
         }
     }
 }

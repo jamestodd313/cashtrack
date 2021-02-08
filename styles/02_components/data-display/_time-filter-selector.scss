@@ -3,6 +3,14 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     margin-top: 24px;
+    @media screen and (min-width: 768px){
+        justify-content: space-around;
+    }
+    @media screen and (min-width: 992px){
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+    }
     .time-option{
         background: none;
         border: none;

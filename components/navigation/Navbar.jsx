@@ -1,11 +1,11 @@
 import { NavLink } from "./NavLink"
-export const Navbar = () => {
+export const Navbar = ({active}) => {
     return (
         <nav className="main-nav">
-            <NavLink link="home" active={true}/>
-            <NavLink link="cash"/>
-            <NavLink link="investing"/>
-            <NavLink link="account"/>
+            <NavLink link="home" active={active === "home" ? true : false}/>
+            <NavLink link="cash" active={active === "cash" ? true : false}/>
+            <NavLink link="investing" active={active === "investing" ? true : false}/>
+            <NavLink link="account" active={active === "account" ? true : false}/>
         </nav>
     )
 }
