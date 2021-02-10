@@ -3,6 +3,8 @@ import {Line, Bar, Doughnut, } from 'react-chartjs-2'
 import { convertToDollars } from '../../../util/convertToDollars'
 
 export const Graph = ({data, variant, time, title}) => {
+
+    // -----------------
     const [formattedData, setFormattedData] = useState({})
     const [view, setView] = useState('line')
     const [change, setChange] = useState(0)
@@ -51,7 +53,8 @@ export const Graph = ({data, variant, time, title}) => {
     },[variant])
     // format data passed from parent prop
     useEffect(()=>{
-        setFormattedData(formatData(data))
+        if(view === 'line') setFormattedData(formatData(data))
+        // else setFormattedData(formatData(donutData))
     }, [data, view, time])
     useEffect(()=>{
        setChange(calculateChange())
@@ -85,6 +88,18 @@ export const Graph = ({data, variant, time, title}) => {
         }
     }
 
+    const donutData = {
+        labels: ['US Bank Checking', 'US Bank Savings', 'Robinhood'],
+        datasets: [
+            {
+                data: [16350.86, 151699.76, 46942.03],
+                backgroundColor: view === 'line' ? 'transparent' : view === 'doughnut' ? shuffle(['#421869', '#491a74', '#721cb8', '#995bd5', '#bf99f2', '#9cf945', '#8edf34', '#80c423', '#509724', '#1f6924', '#5390d9', '#4ea8de', '#48bfe3', '#56cfe1', '#64dfdf', '#72efdd', '#80ffdb', '#421869', '#491a74', '#721cb8', '#995bd5', '#bf99f2', '#9cf945', '#8edf34', '#80c423', '#509724', '#1f6924', '#5390d9', '#4ea8de', '#48bfe3', '#56cfe1', '#64dfdf', '#72efdd', '#80ffdb' ]) : null,
+                borderColor: view === 'line' ? '#bcec37' : 'transparent',
+                borderWidth: 3
+            },
+
+        ]
+    }
     return (
         <div className="graph-container">
             <header className="graph-header">
@@ -108,15 +123,15 @@ export const Graph = ({data, variant, time, title}) => {
                     null : 
                 view === "doughnut" ? 
                     time === 'day' ? 
-                        <Doughnut data={formattedData} options={graphOptions}/> : 
+                        <Doughnut data={donutData} options={graphOptions}/> : 
                     time === 'week' ? 
-                        <Doughnut data={formattedData} options={graphOptions}/> : 
+                        <Doughnut data={donutData} options={graphOptions}/> : 
                     time === 'month' ? 
-                        <Doughnut data={formattedData} options={graphOptions}/> : 
+                        <Doughnut data={donutData} options={graphOptions}/> : 
                     time === 'quarter' ? 
-                        <Doughnut data={formattedData} options={graphOptions}/> : 
+                        <Doughnut data={donutData} options={graphOptions}/> : 
                     time === 'year' ? 
-                        <Doughnut data={formattedData} options={graphOptions}/> :
+                        <Doughnut data={donutData} options={graphOptions}/> :
                     null :
                 null
             }

@@ -1,6 +1,6 @@
 export const formatLineData = accountsData => {
     let totalBalance = 0
-    const calculateTotalBalance = balanceToAdd=> totalBalance += balanceToAdd
+    const calculateTotalBalance = balanceToAdd => totalBalance += balanceToAdd
     //===================
     let monthData = []
     const calculateMonthData = months => {
@@ -31,116 +31,90 @@ export const formatLineData = accountsData => {
         return dayData
     }
     //===================
-    let weekData = []
 
-    const generateDate = (num) => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+    let weekData = []
+    const generateDate = num => {
         let dateRef = new Date()
         dateRef.setDate(dateRef.getDate() - num)
         dateRef = new Date(dateRef).toDateString()
         return dateRef
     }
     const calculateWeekData = month => {
-        let today = new Date().toDateString()
-        let yesterday = generateDate(1)
-        let twoAgo = generateDate(2)
-        let threeAgo = generateDate(3)
-        let fourAgo = generateDate(4)
-        let fiveAgo = generateDate(5)
-        let sixAgo = generateDate(5)
-        let weekAgo = generateDate(5)
+        console.log(month)
+    //     let today = new Date().toDateString()
+    //     let yesterday = generateDate(1)
+    //     let twoAgo = generateDate(2)
+    //     let threeAgo = generateDate(3)
+    //     let fourAgo = generateDate(4)
+    //     let fiveAgo = generateDate(5)
+    //     let sixAgo = generateDate(6)
+    //     let weekAgo = generateDate(7)
 
-        let thisWeek = {
-                [today]: [],
-                [yesterday]: [],
-                [twoAgo]: [],
-                [threeAgo]: [],
-                [fourAgo]: [],
-                [fiveAgo]: [],
-                [sixAgo]: [],
-                [weekAgo]: [],
-        }
-        month.transactions.forEach(transaction=>{
-            let dateRef = new Date(transaction.date).toDateString()
-            switch(dateRef){
-                case today:
-                    if(thisWeek[today].length > 0){
-                        if(today[0] > transaction.date) return
-                        else thisWeek[today] = [transaction.runningBalance]
-                    }else{
-                        thisWeek[today].push(transaction.runningBalance)
-                    }
-                    break
-                case yesterday:
-                    if(thisWeek[yesterday].length > 0){
-                        if(yesterday[0] > transaction.date) return
-                        else thisWeek[yesterday] = [transaction.runningBalance]
-                    }else{
-                        thisWeek[yesterday].push(transaction.runningBalance)
-                    }
-                    break
-                case twoAgo:
-                    if(thisWeek[twoAgo].length > 0){
-                        if(twoAgo[0] > transaction.date) return
-                        else thisWeek[twoAgo] = [transaction.runningBalance]
-                    }else{
-                        thisWeek[twoAgo].push(transaction.runningBalance)
-                    }
-                    break
-                case threeAgo:
-                    if(thisWeek[threeAgo].length > 0){
-                        if(threeAgo[0] > transaction.date) return
-                        else thisWeek[threeAgo] = [transaction.runningBalance]
-                    }else{
-                        thisWeek[threeAgo].push(transaction.runningBalance)
-                    }
-                    break
-                case fourAgo:
-                    if(thisWeek[fourAgo].length > 0){
-                        if(fourAgo[0] > transaction.date) return
-                        else thisWeek[fourAgo] = [transaction.runningBalance]
-                    }else{
-                        thisWeek[fourAgo].push(transaction.runningBalance)
-                    }
-                    break
-                case fiveAgo:
-                    if(thisWeek[fiveAgo].length > 0){
-                        if(fiveAgo[0] > transaction.date) return
-                        else thisWeek[fiveAgo] = [transaction.runningBalance]
-                    }else{
-                        thisWeek[fiveAgo].push(transaction.runningBalance)
-                    }
-                    break
-                case sixAgo:
-                    if(thisWeek[sixAgo].length > 0){
-                        if(sixAgo[0] > transaction.date) return
-                        else thisWeek[sixAgo] = [transaction.runningBalance]
-                    }else{
-                        thisWeek[sixAgo].push(transaction.runningBalance)
-                    }
-                    break
-                case weekAgo:
-                    if(thisWeek[weekAgo].length > 0){
-                        if(weekAgo[0] > transaction.date) return
-                        else thisWeek[weekAgo] = [transaction.runningBalance]
-                    }else{
-                        thisWeek[weekAgo].push(transaction.runningBalance)
-                    }
-                    break
-                default:
-                    break
-            }
-        })
+    //     weekData = [
+    //         {label: [today], value: 0},
+    //         {label: [yesterday], value: 0},
+    //         {label: [twoAgo], value: 0},
+    //         {label: [threeAgo], value: 0},
+    //         {label: [fourAgo], value: 0},
+    //         {label: [fiveAgo], value: 0},
+    //         {label: [sixAgo], value: 0},
+    //         {label: [weekAgo], value: 0},
+    //     ]
 
-        
-        console.log(thisWeek)
-        // console.log({today, yesterday, twoAgo, threeAgo, fourAgo, fiveAgo, sixAgo, weekAgo})
+    //     month.transactions.forEach(transaction=> {
+    //         const transactionDateAsDateString = new Date(transaction.date).toDateString()
+    //         weekData.forEach(day=> {
+    //             if(day.label == transactionDateAsDateString) day.value = transaction.runningBalance
+    //         })
+    //     })
+    //     weekData.forEach(day=>{
+    //         if(day.value === 0){
+    //             // if the days value is zero then we need to change it to the previous or next balance that isnt zero
+                
+    //             // and if it's today (element 0 in the weekData array) then we'll update the balance to the next day
+
+
+
+
+    //             // let indexOfDay = weekData.indexOf(day)
+    //             // if(indexOfDay === 0){
+    //             //     let nextDayValue = weekData[indexOfDay + 1].value
+    //             //     day.value = nextDayValue
+    //             // }else if(indexOfDay === weekData.length){
+    //             //     let prevDayValue = weekData[indexOfDay - 1].value
+    //             //     day.value = prevDayValue
+    //             // }
+                
+    //         }else{
+    //             return
+    //         }
+    
+    //     })
+    //     console.log(weekData)
+
     }
 
 
 
 
 
-// FIGURE OUT HOW TO FILL INN THE EMPTY SPACES IN THE THISWEEK ARRAY. GOOD LUCK. I DONT REMEMBER HOW I DID THIS AND I DID IT LIKE 5 MINS AGO SO HOPEFULLY FUTURE ME CAN FGURE IT OUT
+
+
+
+
 
 
 
@@ -154,6 +128,5 @@ export const formatLineData = accountsData => {
         calculateWeekData(acct.transactions[0])
     })
 
-    // console.log({totalBalance, monthData, dayData})
-    return( {totalBalance, monthData, dayData} )
+    return( {totalBalance, monthData, dayData, weekData} )
 }

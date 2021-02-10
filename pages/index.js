@@ -5,7 +5,7 @@ import { TableSection } from '../components/data-display/table/TableSection'
 import { TimePeriodSelector } from '../components/filters/TimePeriodSelector'
 import { Navbar } from '../components/navigation/Navbar'
 export default function Home({incomeData, spendingData, savingData, investingData, accountBalance}) {
-  const [time, setTime] = useState('week')
+  const [time, setTime] = useState('day')
   return (
     <>
       <Head>
@@ -15,12 +15,12 @@ export default function Home({incomeData, spendingData, savingData, investingDat
         {
           incomeData && spendingData && savingData && investingData && accountBalance ? (
             <>
-            <Graph variant={'line'} data={accountBalance} time={time} title="Total Balance"/>
+            <Graph variant={'line'} data={accountBalance} time={time} title="Total Balance" lineData={"sfdlkjhasfghklbhlsv"} circleData={214356}/>
             <TimePeriodSelector time={time} setTime={setTime}/>
-            <TableSection title="Income" tableData={incomeData}/>
-            <TableSection title="Spending" tableData={spendingData}/>
-            <TableSection title="Saving" tableData={savingData}/>
-            <TableSection title="Investing" tableData={investingData}/>
+            <TableSection title="Income" tableData={incomeData} time={time}/>
+            <TableSection title="Spending" tableData={spendingData} time={time}/>
+            <TableSection title="Saving" tableData={savingData} time={time}/>
+            <TableSection title="Investing" tableData={investingData} time={time}/>
             </>
           ) : "Something went wrong. Please try again."
         }

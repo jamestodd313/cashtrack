@@ -74,103 +74,509 @@ export default function placeholder(req, res){
                     }
                 },
                 incomeData:{
-                    highlight: 9650.87,
-                    items: [
-                        {
-                            item: 'Direct Deposits',
-                            transactions: 1,
-                            value: 9650.87,
-                            change: 9650.87
-                        },
-                        { 
-                            item: "Cash/Check Deposits",
-                            transactions: 0,
-                            value: 0.00,
-                            change: 0.00
-                        },
-                        { 
-                            item: "Transfers",
-                            transactions: 0,
-                            value: 0.00,
-                            change: 0.00
-                        },
-                    ],
+                    day: {
+                        highlight: 0.00,
+                        items: [
+                            {
+                                item: 'Direct Deposits',
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                            { 
+                                item: "Cash/Check Deposits",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                            { 
+                                item: "Transfers",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                        ],
+                    },
+                    week: {
+                        highlight: 5650.87,
+                        items: [
+                            {
+                                item: 'Direct Deposits',
+                                transactions: 1,
+                                value: 5650.87,
+                                change: 5650.87
+                            },
+                            { 
+                                item: "Cash/Check Deposits",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                            { 
+                                item: "Transfers",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                        ],
+                    },
+                    month: {
+                        highlight: 9650.87,
+                        items: [
+                            {
+                                item: 'Direct Deposits',
+                                transactions: 1,
+                                value: 9650.87,
+                                change: 9650.87
+                            },
+                            { 
+                                item: "Cash/Check Deposits",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                            { 
+                                item: "Transfers",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                        ],
+                    },
+                    quarter: {
+                        highlight: 9650.87,
+                        items: [
+                            {
+                                item: 'Direct Deposits',
+                                transactions: 1,
+                                value: 9650.87,
+                                change: 9650.87
+                            },
+                            { 
+                                item: "Cash/Check Deposits",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                            { 
+                                item: "Transfers",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                        ],
+                    },
+                    year: {
+                        highlight: 9650.87,
+                        items: [
+                            {
+                                item: 'Direct Deposits',
+                                transactions: 1,
+                                value: 9650.87,
+                                change: 9650.87
+                            },
+                            { 
+                                item: "Cash/Check Deposits",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                            { 
+                                item: "Transfers",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                        ],
+                    },
+                    
                 },
                 spendingData:{
-                    highlight: -862.56 - 302.75,
-                    items: [
-                        {
-                            item: "Purchases",
-                            transactions: 1,
-                            value: 862.56,
-                            change: -862.56
-                        },
-                        {
-                            item: "Withdrawals",
-                            transactions: 1,
-                            value: 302.75,
-                            change: -302.75
-                        },
-                        {
-                            item: "Transfers",
-                            transactions: 0,
-                            value: 0,
-                            change: 0
-                        },
-                    ]
+                    day: {
+                        highlight: -56.12,
+                        items: [
+                            {
+                                item: "Purchases",
+                                transactions: 3,
+                                value: 56.12,
+                                change: -56.12
+                            },
+                            {
+                                item: "Withdrawals",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                            {
+                                item: "Transfers",
+                                transactions: 0,
+                                value: 0,
+                                change: 0
+                            },
+                        ]
+                    },
+                    week: {
+                        highlight: -862.56 - 302.75,
+                        items: [
+                            {
+                                item: "Purchases",
+                                transactions: 1,
+                                value: 862.56,
+                                change: -862.56
+                            },
+                            {
+                                item: "Withdrawals",
+                                transactions: 1,
+                                value: 302.75,
+                                change: -302.75
+                            },
+                            {
+                                item: "Transfers",
+                                transactions: 0,
+                                value: 0,
+                                change: 0
+                            },
+                        ]
+                    },
+                    month: {
+                        highlight: -862.56 - 302.75,
+                        items: [
+                            {
+                                item: "Purchases",
+                                transactions: 1,
+                                value: 862.56,
+                                change: -862.56
+                            },
+                            {
+                                item: "Withdrawals",
+                                transactions: 1,
+                                value: 302.75,
+                                change: -302.75
+                            },
+                            {
+                                item: "Transfers",
+                                transactions: 0,
+                                value: 0,
+                                change: 0
+                            },
+                        ]
+                    },
+                    quarter: {
+                        highlight: -862.56 - 302.75,
+                        items: [
+                            {
+                                item: "Purchases",
+                                transactions: 1,
+                                value: 862.56,
+                                change: -862.56
+                            },
+                            {
+                                item: "Withdrawals",
+                                transactions: 1,
+                                value: 302.75,
+                                change: -302.75
+                            },
+                            {
+                                item: "Transfers",
+                                transactions: 0,
+                                value: 0,
+                                change: 0
+                            },
+                        ]
+                    },
+                    year: {
+                        highlight: -862.56 - 302.75,
+                        items: [
+                            {
+                                item: "Purchases",
+                                transactions: 1,
+                                value: 862.56,
+                                change: -862.56
+                            },
+                            {
+                                item: "Withdrawals",
+                                transactions: 1,
+                                value: 302.75,
+                                change: -302.75
+                            },
+                            {
+                                item: "Transfers",
+                                transactions: 0,
+                                value: 0,
+                                change: 0
+                            },
+                        ]
+                    },
+                   
                 },
                 savingData: {
-                    highlight: 5616.24,
-                    items: [
-                        {
-                        item: "Deposits",
-                        transactions: 1,
-                        value: 5000.00,
-                        change: 5000.00
-                        },
-                        {
-                        item: "Withdrawals",
-                        transactions: "0",
-                        value: 0.00,
-                        change: 0.00
-                        },
-                        {
-                        item: "Interest",
-                        transactions: "0.22%",
-                        value: 616.24,
-                        change: 616.24
-                        },
-                
-                    ]
-                },
-                investingData:{
-                    highlight: 41652.45 + 7124.13 + 862.56 + 0,
-                    items: [
-                        {
-                            item: "Market",
-                            transactions: "+12%",
-                            value: 41652.45,
-                            change: 41652.45
-                        },
-                        {
-                            item: "Dividends",
-                            transactions: 3,
-                            value: 7124.13,
-                            change: 7124.13
-                        },
-                        {
+                    day: {
+                        highlight: 0.00,
+                        items: [
+                            {
                             item: "Deposits",
-                            transactions: 1,
-                            value: 862.56,
-                            change: -862.56
-                        },
-                        {
-                            item: "Withdrawals",
                             transactions: 0,
                             value: 0.00,
                             change: 0.00
-                        },
-                    ]
+                            },
+                            {
+                            item: "Withdrawals",
+                            transactions: "0",
+                            value: 0.00,
+                            change: 0.00
+                            },
+                            {
+                            item: "Interest",
+                            transactions: "0%",
+                            value: 616.24,
+                            change: 0.00
+                            },
+                    
+                        ]
+                    },
+                    week: {
+                        highlight: 5000.00,
+                        items: [
+                            {
+                            item: "Deposits",
+                            transactions: 1,
+                            value: 5000.00,
+                            change: 5000.00
+                            },
+                            {
+                            item: "Withdrawals",
+                            transactions: "0",
+                            value: 0.00,
+                            change: 0.00
+                            },
+                            {
+                            item: "Interest",
+                            transactions: "0%",
+                            value: 0.00,
+                            change: 0.00
+                            },
+                    
+                        ]
+                    },
+                    month: {
+                        highlight: 8513.39,
+                        items: [
+                            {
+                                item: "Deposits",
+                                transactions: 1,
+                                value: 5000.00,
+                                change: 5000.00
+                            },
+                            {
+                                item: "Withdrawals",
+                                transactions: "0",
+                                value: 0.00,
+                                change: 0.00
+                            },
+                            {
+                                item: "Interest",
+                                transactions: "0.22%",
+                                value: 3513.39,
+                                change: 3513.39
+                            },
+                    
+                        ]
+                    },
+                    quarter: {
+                        highlight: 5616.24,
+                        items: [
+                            {
+                            item: "Deposits",
+                            transactions: 1,
+                            value: 5000.00,
+                            change: 5000.00
+                            },
+                            {
+                            item: "Withdrawals",
+                            transactions: "0",
+                            value: 0.00,
+                            change: 0.00
+                            },
+                            {
+                            item: "Interest",
+                            transactions: "0.22%",
+                            value: 616.24,
+                            change: 616.24
+                            },
+                    
+                        ]
+                    },
+                    year: {
+                        highlight: 5616.24,
+                        items: [
+                            {
+                            item: "Deposits",
+                            transactions: 1,
+                            value: 5000.00,
+                            change: 5000.00
+                            },
+                            {
+                            item: "Withdrawals",
+                            transactions: "0",
+                            value: 0.00,
+                            change: 0.00
+                            },
+                            {
+                            item: "Interest",
+                            transactions: "0.22%",
+                            value: 616.24,
+                            change: 616.24
+                            },
+                    
+                        ]
+                    },
+                },
+                investingData:{
+                    day: {
+                        highlight: 1887.62 + 56.12,
+                        items: [
+                            {
+                                item: "Market",
+                                transactions: "+4.32%",
+                                value: 1887.62 + 56.12,
+                                change: 1887.62 + 56.12
+                            },
+                            {
+                                item: "Dividends",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                            {
+                                item: "Deposits",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                            {
+                                item: "Withdrawals",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                        ]
+                    },
+                    week: {
+                        highlight: 6942.13,
+                        items: [
+                            {
+                                item: "Market",
+                                transactions: "+15.05%",
+                                value: 6018.00,
+                                change: 6018.00
+                            },
+                            {
+                                item: "Dividends",
+                                transactions: 3,
+                                value: 924.13,
+                                change: 924.13
+                            },
+                            {
+                                item: "Deposits",
+                                transactions: 0,
+                                value: 0,
+                                change: 0
+                            },
+                            {
+                                item: "Withdrawals",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                        ]
+                    },
+                    month: {
+                        highlight: 41652.45 + 7124.13 + 862.56 + 0,
+                        items: [
+                            {
+                                item: "Market",
+                                transactions: "+12%",
+                                value: 41652.45,
+                                change: 41652.45
+                            },
+                            {
+                                item: "Dividends",
+                                transactions: 3,
+                                value: 7124.13,
+                                change: 7124.13
+                            },
+                            {
+                                item: "Deposits",
+                                transactions: 1,
+                                value: 862.56,
+                                change: -862.56
+                            },
+                            {
+                                item: "Withdrawals",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                        ]
+                    },
+                    quarter: {
+                        highlight: 41652.45 + 7124.13 + 862.56 + 0,
+                        items: [
+                            {
+                                item: "Market",
+                                transactions: "+12%",
+                                value: 41652.45,
+                                change: 41652.45
+                            },
+                            {
+                                item: "Dividends",
+                                transactions: 3,
+                                value: 7124.13,
+                                change: 7124.13
+                            },
+                            {
+                                item: "Deposits",
+                                transactions: 1,
+                                value: 862.56,
+                                change: -862.56
+                            },
+                            {
+                                item: "Withdrawals",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                        ]
+                    },
+                    year: {
+                        highlight: 41652.45 + 7124.13 + 862.56 + 0,
+                        items: [
+                            {
+                                item: "Market",
+                                transactions: "+12%",
+                                value: 41652.45,
+                                change: 41652.45
+                            },
+                            {
+                                item: "Dividends",
+                                transactions: 3,
+                                value: 7124.13,
+                                change: 7124.13
+                            },
+                            {
+                                item: "Deposits",
+                                transactions: 1,
+                                value: 862.56,
+                                change: -862.56
+                            },
+                            {
+                                item: "Withdrawals",
+                                transactions: 0,
+                                value: 0.00,
+                                change: 0.00
+                            },
+                        ]
+                    },
                 }
             }
             break
@@ -340,3 +746,7 @@ export default function placeholder(req, res){
     ]
     res.status(200).json(placeholderData)
 }
+
+
+// UPDATE ALL THE PLACEHOLDER DATA TO HAVE DIFFERENT VALUES FOR EACH DIFFERNT TIME FILTER.
+// DAY IS ALREADY DONE. JUST DO LIKE THAT.

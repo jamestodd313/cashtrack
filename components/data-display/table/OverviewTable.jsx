@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react"
 import { BorderButton } from "../../buttons/BorderButton"
 import { TableRow } from "./TableRow"
 
 export const OverviewTable = ({tableData}) => {
-    // console.log(tableData)
     return (
         <table className="overview-table">
             <thead>
@@ -12,7 +12,7 @@ export const OverviewTable = ({tableData}) => {
                 </tr>
             </thead>
             <tbody>
-                {tableData.items.map(row=> <TableRow key={`${row.item}-${Math.floor(Math.random() * 52387 * Math.floor(Math.random() * 23324))}`} transactions={row.transactions} item={row.item} value={row.value} change={row.change}/>)}
+                {tableData.items ? tableData.items.map(row=> <TableRow key={`${row.item}-${Math.floor(Math.random() * 52387 * Math.floor(Math.random() * 23324))}`} transactions={row.transactions} item={row.item} value={row.value} change={row.change}/>) : null}
             </tbody>
             <tfoot>
                 <tr>

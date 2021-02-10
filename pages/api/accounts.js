@@ -18,19 +18,19 @@ export default function accounts(req, res){
                         },
                         {
                             type: 'purchase',
-                            amount: 194.86,
-                            date: '2021-02-01T19:41:35+0000',
-                            toFrom: 'Amazon',
-                            category: 'Shopping',
-                            runningBalance: 16785.62
+                            amount: 6.69,
+                            date: '2021-02-02T19:41:35+0000',
+                            toFrom: 'Starbucks',
+                            category: 'Dining & Drinks',
+                            runningBalance: 16792.31
                         },
                         {
-                            type: 'direct deposit',
-                            amount: 9650.47,
-                            date: '2021-02-02T19:41:35+0000',
-                            toFrom: 'Solasa',
-                            category: 'Paycheck',
-                            runningBalance: 26436.09
+                            type: 'purchase',
+                            amount: 6.69,
+                            date: '2021-02-03T19:41:35+0000',
+                            toFrom: 'Starbucks',
+                            category: 'Dining & Drinks',
+                            runningBalance: 16792.31
                         },
                         {
                             type: 'purchase',
@@ -38,12 +38,36 @@ export default function accounts(req, res){
                             date: '2021-02-04T19:41:35+0000',
                             toFrom: 'Starbucks',
                             category: 'Dining & Drinks',
+                            runningBalance: 16792.31
+                        },
+                        {
+                            type: 'purchase',
+                            amount: 194.86,
+                            date: '2021-02-05T19:41:35+0000',
+                            toFrom: 'Amazon',
+                            category: 'Shopping',
+                            runningBalance: 16785.62
+                        },
+                        {
+                            type: 'direct deposit',
+                            amount: 9650.47,
+                            date: '2021-02-06T19:41:35+0000',
+                            toFrom: 'Solasa',
+                            category: 'Paycheck',
+                            runningBalance: 26436.09
+                        },
+                        {
+                            type: 'purchase',
+                            amount: 6.69,
+                            date: '2021-02-07T19:41:35+0000',
+                            toFrom: 'Starbucks',
+                            category: 'Dining & Drinks',
                             runningBalance: 26429.40
                         },
                         {
                             type: 'transfer out',
                             amount: 6000.00,
-                            date: '2021-02-04T19:41:35+0000',
+                            date: '2021-02-08T19:41:35+0000',
                             toFrom: 'Vanguard',
                             category: 'Investing',
                             runningBalance:  20429.40
@@ -51,7 +75,7 @@ export default function accounts(req, res){
                         {
                             type: 'transfer out',
                             amount: 2600.00,
-                            date: '2021-02-06T19:41:35+0000',
+                            date: '2021-02-09T19:41:35+0000',
                             toFrom: 'FBG Properties',
                             category: 'Bills & Utilities',
                             runningBalance: 17829.40
