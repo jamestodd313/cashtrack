@@ -125,7 +125,7 @@ export default function placeholder(req, res){
                         items: [
                             {
                                 item: 'Direct Deposits',
-                                transactions: 1,
+                                transactions: 2,
                                 value: 9650.87,
                                 change: 9650.87
                             },
@@ -144,13 +144,13 @@ export default function placeholder(req, res){
                         ],
                     },
                     quarter: {
-                        highlight: 9650.87,
+                        highlight: 9650.87 * 4,
                         items: [
                             {
                                 item: 'Direct Deposits',
-                                transactions: 1,
-                                value: 9650.87,
-                                change: 9650.87
+                                transactions: 8,
+                                value: 9650.87 * 4,
+                                change: 9650.87 * 4
                             },
                             { 
                                 item: "Cash/Check Deposits",
@@ -167,7 +167,7 @@ export default function placeholder(req, res){
                         ],
                     },
                     year: {
-                        highlight: 9650.87,
+                        highlight: 38603.48 * 4,
                         items: [
                             {
                                 item: 'Direct Deposits',
@@ -220,7 +220,7 @@ export default function placeholder(req, res){
                         items: [
                             {
                                 item: "Purchases",
-                                transactions: 1,
+                                transactions: 9,
                                 value: 862.56,
                                 change: -862.56
                             },
@@ -239,19 +239,19 @@ export default function placeholder(req, res){
                         ]
                     },
                     month: {
-                        highlight: -862.56 - 302.75,
+                        highlight: -2892.45,
                         items: [
                             {
                                 item: "Purchases",
-                                transactions: 1,
-                                value: 862.56,
-                                change: -862.56
+                                transactions: 42,
+                                value: 2682.45,
+                                change: -2682.45
                             },
                             {
                                 item: "Withdrawals",
                                 transactions: 1,
-                                value: 302.75,
-                                change: -302.75
+                                value: 200.00,
+                                change: -200.00
                             },
                             {
                                 item: "Transfers",
@@ -285,7 +285,7 @@ export default function placeholder(req, res){
                         ]
                     },
                     year: {
-                        highlight: -862.56 - 302.75,
+                        highlight: -64755.4,
                         items: [
                             {
                                 item: "Purchases",
@@ -462,13 +462,13 @@ export default function placeholder(req, res){
                         ]
                     },
                     week: {
-                        highlight: 6942.13,
+                        highlight: 2942.13,
                         items: [
                             {
                                 item: "Market",
-                                transactions: "+15.05%",
-                                value: 6018.00,
-                                change: 6018.00
+                                transactions: "+6.40%",
+                                value: 2018.00,
+                                change: 2018.00
                             },
                             {
                                 item: "Dividends",
@@ -491,25 +491,25 @@ export default function placeholder(req, res){
                         ]
                     },
                     month: {
-                        highlight: 41652.45 + 7124.13 + 862.56 + 0,
+                        highlight: 4361.23 ,
                         items: [
                             {
                                 item: "Market",
-                                transactions: "+12%",
-                                value: 41652.45,
-                                change: 41652.45
+                                transactions: "+6.39%",
+                                value: 2937.1,
+                                change: 2937.1
                             },
                             {
                                 item: "Dividends",
                                 transactions: 3,
-                                value: 7124.13,
-                                change: 7124.13
+                                value: 924.13,
+                                change: 924.13
                             },
                             {
                                 item: "Deposits",
                                 transactions: 1,
-                                value: 862.56,
-                                change: -862.56
+                                value: 500,
+                                change: 500
                             },
                             {
                                 item: "Withdrawals",
