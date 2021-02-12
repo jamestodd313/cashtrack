@@ -21,7 +21,7 @@ export default function Home({accounts, profile}) {
           loading ? "Loading..." : (
 
             <>
-            <Graph variant="line" data={accounts} time={time}/>
+            <Graph variant="line" data={accounts} time={time} title="Accounts Overview"/>
             <TimePeriodSelector time={time} setTime={setTime}/>
             </>
 

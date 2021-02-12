@@ -3,11 +3,14 @@ import { Navbar } from "../components/navigation/Navbar";
 import { Graph } from '../components/data-display/graph/Graph'
 import { TableSection } from '../components/data-display/table/TableSection'
 import { TimePeriodSelector } from '../components/filters/TimePeriodSelector'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function cash({accountBalance, accounts}){
-    const [time, setTime] = useState('week')
-    console.log({accountBalance, accounts})
+export default function cash({profile, accounts}){
+    const [time, setTime] = useState('day')
+    const [dataToPass, setDataToPass] = useState({})
+    useEffect(()=>{
+        let obj = {checking: accounts.checking, savings: accounts.savings}
+    },[accounts])
     return(
         <>
             <Head>
@@ -16,9 +19,9 @@ export default function cash({accountBalance, accounts}){
             <Navbar active="cash"/>
 
             <main>
-                { !accountBalance ?  'Something went wrong. Please try again.' : (
+                { !accounts ?  'Something went wrong. Please try again.' : (
                     <>
-                    <Graph variant={'doughnut'} data={accountBalance} time={time} title="Cash Accounts"/>
+                    <Graph variant={'line'} data={{checking: accounts.checking, savings: accounts.savings}} time={time} title="Cash Accounts"/>
                     <TimePeriodSelector time={time} setTime={setTime}/>
                     {/* map through data.accounts or something like that idk. youll find it */}
                     {/* <TableSection title="Income" tableData={incomeData}/>
@@ -33,10 +36,10 @@ export default function cash({accountBalance, accounts}){
 }
 
 cash.getInitialProps = async ctx=>{
-    const apiCall = await fetch('http://localhost:3000/api/placeholder?page=cash')
+    const apiCall = await fetch('http://localhost:3000/api/fakeuser')
     const apiResponse = await apiCall.json()
-    const {accountBalance, accounts} = await apiResponse
-    return {accountBalance, accounts}
+    const {profile, accounts} = await apiResponse
+    return {profile, accounts}
 }
 
 

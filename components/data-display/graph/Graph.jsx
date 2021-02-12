@@ -5,7 +5,6 @@ import {Line, Bar, Doughnut, } from 'react-chartjs-2'
 import { convertToDollars } from '../../../util/convertToDollars'
 import { shuffle } from '../../../util/shuffle'
 export const Graph = ({data, variant, time, title}) => {
-
 // variant control - 🟢
     const [view, setView] = useState(variant)
     useEffect(()=>{
@@ -15,7 +14,10 @@ export const Graph = ({data, variant, time, title}) => {
 // calculate total balance - 🟢
     const [totalBalance, setTotalBalance] = useState(0)
     useEffect(()=>{
-        let num = data.checking.currentBalance + data.savings.currentBalance + data.investing.currentBalance
+        let num = 0
+        if(!data.investing) num = data.checking.currentBalance + data.savings.currentBalance
+        else if(!data.checking && !data.savings) num = data.investing.currentBalance
+        else num = data.checking.currentBalance + data.savings.currentBalance + data.investing.currentBalance
         setTotalBalance(num)
     },[data])
 
@@ -105,11 +107,33 @@ export const Graph = ({data, variant, time, title}) => {
         })
     },[data, time])
 
-// format line data - 🟢
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+// format line data - 🟡
     const [formattedLineData, setFormattedLineData] = useState({})
     const calculateStartingValue = transaction => {
         if(!transaction) return
         let end = transaction.runningBalance
+
         if(transaction.hasOwnProperty('pl')){ // investing account
             let divTotal = 0
             transaction.dividends.forEach(dividend=> divTotal += dividend.amount)
@@ -125,6 +149,7 @@ export const Graph = ({data, variant, time, title}) => {
         }else{ // savings account
             return transaction.runningBalance
         }
+    
     }
     useEffect(()=>{
         let template = {
@@ -138,64 +163,143 @@ export const Graph = ({data, variant, time, title}) => {
                 }
             ]
         }
-        investingTransactions.forEach((transaction, i)=>{
-            if(time.toLowerCase() == 'day'){
-                // set the first label to be '12 AM'
-                template.labels.push('12 AM')
-                // the first value is the day's starting balance
-                template.datasets[0].data.push(calculateStartingValue(transaction[0]))
-                // the second label is 'NOW'
-                template.labels.push('Now')
-                // the second value is current balance
-                template.datasets[0].data.push(transaction[0].runningBalance)
-            }
-            else{
-                // add dates as labels (WORKS)
-                template.labels.push(transaction.date)
-                // for the first transactiion use the startiing value otherwise use running balance
-                if(i === 0) template.datasets[0].data.push(calculateStartingValue(transaction))
-                else template.datasets[0].data.push(transaction.runningBalance)
-            }
-        })
+
+        // figure out a way to ignore unnecessary data. (don't include investing on cash page, etc.)
+
         let others = [checkingTransactions, savingsTransactions]
-        others.forEach(act=>{
-            act.forEach((transaction, i)=>{
-                if(time.toLowerCase() == 'day'){
-                    // add values to existing values in array
-                    template.datasets[0].data[0] += calculateStartingValue(transaction[0])
-                    template.datasets[0].data[1] += transaction[0].runningBalance
-                }
-                else{
-                    template.datasets[0].data[i] += transaction.runningBalance
+        if(!data.investing){ // cash page
+            others.forEach(act=>{
+                try{
+                    if(time.toLowerCase() == 'day'){ // if time is day we don;t need to loop. just set the values
+                        template.labels = ["12 AM", "Now"]
+                        if(!template.datasets[0].data[0]) template.datasets[0].data = [0, 0]
+                        template.datasets[0].data[0] = template.datasets[0].data[0] + calculateStartingValue(act[0][0])
+                        template.datasets[0].data[1] = template.datasets[0].data[1] + act[0][0].runningBalance
+                    }else{ // otherwise loop through the transactions to set values
+                        act.forEach((transaction, i)=>{
+                            if(!template.datasets[0].data[i]) template.datasets[0].data[i] = 0
+                            if(!template.labels[i]) template.labels[i] = transaction.date
+                            template.datasets[0].data[i] = template.datasets[0].data[i] + transaction.runningBalance
+                        })
+                    }
+                }catch{
+                    return
                 }
             })
-        })
-        setFormattedLineData(template)
+            setFormattedLineData(template)
+        }else if(!data.checking && !data.saving){
+            investingTransactions.forEach((transaction, i)=>{
+                if(time.toLowerCase() == 'day'){
+                    // set the first label to be '12 AM'
+                    template.labels.push('12 AM')
+                    // the first value is the day's starting balance
+                    template.datasets[0].data.push(calculateStartingValue(transaction[0]))
+                    // the second label is 'NOW'
+                    template.labels.push('Now')
+                    // the second value is current balance
+                    template.datasets[0].data.push(transaction[0].runningBalance)
+                }
+                else{
+                    // add dates as labels (WORKS)
+                    template.labels.push(transaction.date)
+                    // for the first transactiion use the startiing value otherwise use running balance
+                    if(i === 0) template.datasets[0].data.push(calculateStartingValue(transaction))
+                    else template.datasets[0].data.push(transaction.runningBalance)
+                }
+            })
+            setFormattedLineData(template)
+        }else{
+            investingTransactions.forEach((transaction, i)=>{
+                if(time.toLowerCase() == 'day'){
+                    // set the first label to be '12 AM'
+                    template.labels.push('12 AM')
+                    // the first value is the day's starting balance
+                    template.datasets[0].data.push(calculateStartingValue(transaction[0]))
+                    // the second label is 'NOW'
+                    template.labels.push('Now')
+                    // the second value is current balance
+                    template.datasets[0].data.push(transaction[0].runningBalance)
+                }
+                else{
+                    // add dates as labels (WORKS)
+                    template.labels.push(transaction.date)
+                    // for the first transactiion use the startiing value otherwise use running balance
+                    if(i === 0) template.datasets[0].data.push(calculateStartingValue(transaction))
+                    else template.datasets[0].data.push(transaction.runningBalance)
+                }
+            })
+            others.forEach(act=>{
+                act.forEach((transaction, i)=>{
+                    if(time.toLowerCase() == 'day'){
+                        // add values to existing values in array
+                        template.datasets[0].data[0] += calculateStartingValue(transaction[0])
+                        template.datasets[0].data[1] += transaction[0].runningBalance
+                    }
+                    else{
+                        template.datasets[0].data[i] += transaction.runningBalance
+                    }
+                })
+            })
+            setFormattedLineData(template)
+        }
+    
     },[investingTransactions, savingsTransactions, checkingTransactions])
+
+    // useEffect(()=>{console.log(formattedLineData)},[formattedLineData])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // calculate change - 🟢
     const [valueChange, setValueChange] = useState(0.00)
     useEffect(()=>{
-        try{
-            if(time === 'day'){
-                let saveStart = calculateStartingValue(savingsTransactions[0][0])
-                let checkStart = calculateStartingValue(checkingTransactions[0][0])
-                let investStart = calculateStartingValue(investingTransactions[0][0])
-                let totalStart = saveStart + checkStart + investStart
-                setValueChange(totalBalance - totalStart)
-            }else{
-                let saveStart = calculateStartingValue(savingsTransactions[0])
-                let checkStart = calculateStartingValue(checkingTransactions[0])
-                let investStart = calculateStartingValue(investingTransactions[0])
-                let totalStart = saveStart + checkStart + investStart
-                setValueChange(totalBalance - totalStart)
+        try {
+            let checkStart, saveStart, investStart = 0
+            if(investingTransactions.length === 0){ // then we're on the cash page and just need to add cash accounts
+                if(time === 'day'){
+                    saveStart = calculateStartingValue(savingsTransactions[0][0])
+                    checkStart = calculateStartingValue(checkingTransactions[0][0])
+                }else{
+                    saveStart = calculateStartingValue(savingsTransactions[0])
+                    checkStart = calculateStartingValue(checkingTransactions[0])
+                }
+            }else if(!data.savings){ // then we're only working with investing data
+                if(time === 'day') investStart = calculateStartingValue(investingTransactions[0][0])
+                else investStart = calculateStartingValue(investingTransactions[0]) 
+                checkStart = 0
+                saveStart = 0
+            }else{ // for adding all accounts for home page
+                if(time === 'day'){
+                    saveStart = calculateStartingValue(savingsTransactions[0][0])
+                    checkStart = calculateStartingValue(checkingTransactions[0][0])
+                    investStart = calculateStartingValue(investingTransactions[0][0])
+                }else{
+                    saveStart = calculateStartingValue(savingsTransactions[0])
+                    checkStart = calculateStartingValue(checkingTransactions[0])
+                    investStart = calculateStartingValue(investingTransactions[0])
+                }
             }
-
-        }catch{
+            let totalStart = saveStart + checkStart + investStart
+            console.log({saveStart, checkStart, investStart})
+            setValueChange(totalBalance - totalStart)
+        } catch{
             return
         }
-    },[savingsTransactions, checkingTransactions, investingTransactions])
-    
+    },[savingsTransactions, checkingTransactions, investingTransactions, totalBalance])
+
     const graphOptions = {
         legend: {
             display: false
