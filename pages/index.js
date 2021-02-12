@@ -1,18 +1,34 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Graph } from '../components/data-display/graph/Graph'
 import { TableSection } from '../components/data-display/table/TableSection'
 import { TimePeriodSelector } from '../components/filters/TimePeriodSelector'
 import { Navbar } from '../components/navigation/Navbar'
-export default function Home({incomeData, spendingData, savingData, investingData, accountBalance}) {
+export default function Home({accounts, profile}) {
   const [time, setTime] = useState('day')
+  const [loading, setLoading] = useState(true)
+  useEffect(()=>{
+    if(accounts) setLoading(false)
+  }, [accounts])
   return (
     <>
       <Head>
         <title>CashTrack - Track Your Cash</title>
       </Head>
       <main>
+
         {
+          loading ? "Loading..." : (
+
+            <>
+            <Graph variant="line" data={accounts} time={time}/>
+            <TimePeriodSelector time={time} setTime={setTime}/>
+            </>
+
+          )
+        }
+
+        {/* {
           incomeData && spendingData && savingData && investingData && accountBalance ? (
             <>
             <Graph variant={'line'} data={accountBalance} time={time} title="Total Balance" lineData={"sfdlkjhasfghklbhlsv"} circleData={214356}/>
@@ -23,7 +39,7 @@ export default function Home({incomeData, spendingData, savingData, investingDat
             <TableSection title="Investing" tableData={investingData} time={time}/>
             </>
           ) : "Something went wrong. Please try again."
-        }
+        } */}
       </main>
       <Navbar active="home"/>
     </>
@@ -31,8 +47,8 @@ export default function Home({incomeData, spendingData, savingData, investingDat
 }
 
 Home.getInitialProps = async ctx=> {
-  const apiCall = await fetch('http://localhost:3000/api/placeholder?page=home')
+  const apiCall = await fetch('http://localhost:3000/api/fakeuser')
   const apiResponse = await apiCall.json()
-  const {accountBalance, incomeData, spendingData, savingData, investingData} = apiResponse
-  return { incomeData, spendingData, savingData, investingData, accountBalance }
+  const {accounts, profile} = apiResponse
+  return { accounts, profile }
 }

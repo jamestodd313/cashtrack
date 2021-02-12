@@ -7,7 +7,7 @@ export default function fakeuser(req, res){
             checking: {
                 open: true,
                 accountNumber: 91827465,
-                currentBalance: 6539.09,
+                currentBalance: 2304.27,
                 transactions: {
                     jan21: {
                         _1: [
@@ -563,7 +563,7 @@ export default function fakeuser(req, res){
             investing: {
                 open: true,
                 accountNumber: 62946184,
-                currentBalance: 0.00,
+                currentBalance: 16909.05,
                 transactions: {
                     jan21: {
                         _1: {
