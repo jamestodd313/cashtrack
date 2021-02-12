@@ -1,65 +1,201 @@
+// something isn't working. the change and the graph aren't matching for some reason and the workingArray is getting reversed somehow
+
 import { useEffect, useState } from 'react'
 import {Line, Bar, Doughnut, } from 'react-chartjs-2'
 import { convertToDollars } from '../../../util/convertToDollars'
-
+import { shuffle } from '../../../util/shuffle'
 export const Graph = ({data, variant, time, title}) => {
 
-    // -----------------
-    const [formattedData, setFormattedData] = useState({})
-    const [view, setView] = useState('line')
-    const [change, setChange] = useState(0)
-    const shuffle = arr => {
-        let currentIndex = arr.length, temporaryValue, randomIndex
-        while (0 !== currentIndex) {
-          randomIndex = Math.floor(Math.random() * currentIndex)
-          currentIndex -= 1
-          temporaryValue = arr[currentIndex]
-          arr[currentIndex] = arr[randomIndex]
-          arr[randomIndex] = temporaryValue
-        }
-        return arr
-    }
-    const formatData = obj => {
+// variant control - 🟢
+    const [view, setView] = useState(variant)
+    useEffect(()=>{
+        setView(variant)
+    },[variant])
+
+// calculate total balance - 🟢
+    const [totalBalance, setTotalBalance] = useState(0)
+    useEffect(()=>{
+        let num = data.checking.currentBalance + data.savings.currentBalance + data.investing.currentBalance
+        setTotalBalance(num)
+    },[data])
+
+// format circle data - 🟢
+    const [formattedCircleData, setFormattedCircleData] = useState({})
+    useEffect(()=>{
         let template = {
             labels: [],
             datasets: [
                 {
                     data: [],
-                    backgroundColor: view === 'line' ? 'transparent' : view === 'doughnut' ? shuffle(['#421869', '#491a74', '#721cb8', '#995bd5', '#bf99f2', '#9cf945', '#8edf34', '#80c423', '#509724', '#1f6924', '#5390d9', '#4ea8de', '#48bfe3', '#56cfe1', '#64dfdf', '#72efdd', '#80ffdb', '#421869', '#491a74', '#721cb8', '#995bd5', '#bf99f2', '#9cf945', '#8edf34', '#80c423', '#509724', '#1f6924', '#5390d9', '#4ea8de', '#48bfe3', '#56cfe1', '#64dfdf', '#72efdd', '#80ffdb' ]) : null,
-                    borderColor: view === 'line' ? '#bcec37' : 'transparent',
+                    backgroundColor: ['#721cb8', '#8edf34', '#4ea8de'],
+                    borderColor: 'transparent',
                     borderWidth: 3
                 }
-            ],
+            ]
         }
-        obj.dataPoints[time].forEach(dataPoint=> {
-            template.labels.push(dataPoint.label)
-            template.datasets[0].data.push(dataPoint.value)
+        let arrayOfAccounts = Object.entries(data)
+        arrayOfAccounts.forEach(account=>{
+            template.labels.push(account[0].toUpperCase())
+            template.datasets[0].data.push(account[1].currentBalance)
         })
-        return template
-    }
-    const calculateChange = () => {
-        // if theres no data return
-        if(!formattedData.datasets[0]) return
-        // find the starting and ending values
-        const start = formattedData.datasets[0].data[0]
-        const end = formattedData.datasets[0].data[formattedData.datasets[0].data.length - 1]
-        // the change is the end - start
-        return end - start
-    }
+        setFormattedCircleData(template)
+    },[data, time, view])
 
+// isolate transactions data for easier use - 🟢
+    const [investingTransactions, setInvestingTransactions] = useState([])
+    const [savingsTransactions, setSavingsTransactions] = useState([])
+    const [checkingTransactions, setCheckingTransactions] = useState([])
+    const getTransactions = (account, time)=> {
+        let workingArray = []
+        let acctName = account[0]
+        let transactions = Object.entries(account[1].transactions.jan21)
+        if(acctName.toLowerCase() === 'investing'){
+            transactions.forEach(transaction=>{
+                workingArray.push(transaction[1])
+            })
+        }
+        else{
+            transactions.forEach(transaction=>{
+                workingArray.push(transaction[1][0])
+            })
+        }
+        let length = workingArray.length
+        switch(time){
+            case 'day':
+                workingArray = [workingArray.slice(length - 1)]
+                break
+            case 'week': 
+                workingArray = workingArray.slice(-8, length)
+                break
+            case 'quarter':
+                workingArray = [
+                    {date: "October 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "November 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "December 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "January 2021", type: ['none', 'none'], runningBalance: account[1].currentBalance},
+                ]
+                break
+            case 'year':
+                workingArray = [
+                    {date: "January 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "February 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "March 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "April 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "May 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "June 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "July 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "August 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "September 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "October 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "November 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "December 2020", type: ['none', 'none'], runningBalance: 0.00},
+                    {date: "January 2021", type: ['none', 'none'], runningBalance: account[1].currentBalance},
+                ]
+            default:
+                break
+        }
+        if(acctName.toLowerCase() === 'savings') setSavingsTransactions(workingArray)
+        else if(acctName.toLowerCase() === 'checking') setCheckingTransactions(workingArray)
+        else if(acctName.toLowerCase() === 'investing') setInvestingTransactions(workingArray)
+    }
     useEffect(()=>{
-        // intialize view state with variant prop passed from parent
-        setView(variant)
-    },[variant])
-    // format data passed from parent prop
-    useEffect(()=>{
-        if(view === 'line') setFormattedData(formatData(data))
-        // else setFormattedData(formatData(donutData))
-    }, [data, view, time])
-    useEffect(()=>{
-       setChange(calculateChange())
-    }, [formattedData, data, view, variant, time])
+        let accts = Object.entries(data)
+        accts.forEach(acct=>{
+            getTransactions(acct, time)
+        })
+    },[data, time])
 
+// format line data - 🟢
+    const [formattedLineData, setFormattedLineData] = useState({})
+    const calculateStartingValue = transaction => {
+        if(!transaction) return
+        let end = transaction.runningBalance
+        if(transaction.hasOwnProperty('pl')){ // investing account
+            let divTotal = 0
+            transaction.dividends.forEach(dividend=> divTotal += dividend.amount)
+            let change = transaction.pl + divTotal
+            return end - change
+        }else if(transaction.hasOwnProperty('amount')){ // checking account
+            let change = transaction.amount
+            if(transaction.type[1] === 'debit'){
+                return end + change
+            }else{
+                return end - change
+            }
+        }else{ // savings account
+            return transaction.runningBalance
+        }
+    }
+    useEffect(()=>{
+        let template = {
+            labels: [],
+            datasets: [
+                {
+                    data: [],
+                    backgroundColor: 'transparent',
+                    borderColor: 'lime',
+                    borderWidth: 3
+                }
+            ]
+        }
+        investingTransactions.forEach((transaction, i)=>{
+            if(time.toLowerCase() == 'day'){
+                // set the first label to be '12 AM'
+                template.labels.push('12 AM')
+                // the first value is the day's starting balance
+                template.datasets[0].data.push(calculateStartingValue(transaction[0]))
+                // the second label is 'NOW'
+                template.labels.push('Now')
+                // the second value is current balance
+                template.datasets[0].data.push(transaction[0].runningBalance)
+            }
+            else{
+                // add dates as labels (WORKS)
+                template.labels.push(transaction.date)
+                // for the first transactiion use the startiing value otherwise use running balance
+                if(i === 0) template.datasets[0].data.push(calculateStartingValue(transaction))
+                else template.datasets[0].data.push(transaction.runningBalance)
+            }
+        })
+        let others = [checkingTransactions, savingsTransactions]
+        others.forEach(act=>{
+            act.forEach((transaction, i)=>{
+                if(time.toLowerCase() == 'day'){
+                    // add values to existing values in array
+                    template.datasets[0].data[0] += calculateStartingValue(transaction[0])
+                    template.datasets[0].data[1] += transaction[0].runningBalance
+                }
+                else{
+                    template.datasets[0].data[i] += transaction.runningBalance
+                }
+            })
+        })
+        setFormattedLineData(template)
+    },[investingTransactions, savingsTransactions, checkingTransactions])
+
+// calculate change - 🟢
+    const [valueChange, setValueChange] = useState(0.00)
+    useEffect(()=>{
+        try{
+            if(time === 'day'){
+                let saveStart = calculateStartingValue(savingsTransactions[0][0])
+                let checkStart = calculateStartingValue(checkingTransactions[0][0])
+                let investStart = calculateStartingValue(investingTransactions[0][0])
+                let totalStart = saveStart + checkStart + investStart
+                setValueChange(totalBalance - totalStart)
+            }else{
+                let saveStart = calculateStartingValue(savingsTransactions[0])
+                let checkStart = calculateStartingValue(checkingTransactions[0])
+                let investStart = calculateStartingValue(investingTransactions[0])
+                let totalStart = saveStart + checkStart + investStart
+                setValueChange(totalBalance - totalStart)
+            }
+
+        }catch{
+            return
+        }
+    },[savingsTransactions, checkingTransactions, investingTransactions])
+    
     const graphOptions = {
         legend: {
             display: false
@@ -88,55 +224,14 @@ export const Graph = ({data, variant, time, title}) => {
         }
     }
 
-    const donutData = {
-        labels: ['US Bank Checking', 'US Bank Savings', 'Robinhood'],
-        datasets: [
-            {
-                data: [16350.86, 151699.76, 46942.03],
-                backgroundColor: view === 'line' ? 'transparent' : view === 'doughnut' ? shuffle(['#421869', '#491a74', '#721cb8', '#995bd5', '#bf99f2', '#9cf945', '#8edf34', '#80c423', '#509724', '#1f6924', '#5390d9', '#4ea8de', '#48bfe3', '#56cfe1', '#64dfdf', '#72efdd', '#80ffdb', '#421869', '#491a74', '#721cb8', '#995bd5', '#bf99f2', '#9cf945', '#8edf34', '#80c423', '#509724', '#1f6924', '#5390d9', '#4ea8de', '#48bfe3', '#56cfe1', '#64dfdf', '#72efdd', '#80ffdb' ]) : null,
-                borderColor: view === 'line' ? '#bcec37' : 'transparent',
-                borderWidth: 3
-            },
-
-        ]
-    }
     return (
         <div className="graph-container">
             <header className="graph-header">
                 <h2 className="graph-title">{title}</h2>
-                <span className="balance highlight">{convertToDollars(data.currentBalance).value}</span>
-                {convertToDollars(change).gain >= 0 ?  <div className="change pl pl--gain">+{convertToDollars(change).value}</div> :  <div className="change pl pl--loss">-{convertToDollars(change).value}</div>}
+                <span className="balance highlight">{convertToDollars(totalBalance).value}</span>
+                {convertToDollars(valueChange).gain ? <div className="change pl pl--gain">+{convertToDollars(valueChange).value}</div> :  <div className="change pl pl--loss">-{convertToDollars(valueChange).value}</div>}
             </header>
-
-            {
-                view === "line" ? 
-                    time === 'day' ? 
-                        <Line data={formattedData} options={graphOptions}/> : 
-                    time === 'week' ?
-                        <Line data={formattedData} options={graphOptions}/> : 
-                    time === 'month' ? 
-                        <Line data={formattedData} options={graphOptions}/> : 
-                    time === 'quarter' ? 
-                        <Line data={formattedData} options={graphOptions}/> : 
-                    time === 'year' ?
-                        <Line data={formattedData} options={graphOptions}/> : 
-                    null : 
-                view === "doughnut" ? 
-                    time === 'day' ? 
-                        <Doughnut data={donutData} options={graphOptions}/> : 
-                    time === 'week' ? 
-                        <Doughnut data={donutData} options={graphOptions}/> : 
-                    time === 'month' ? 
-                        <Doughnut data={donutData} options={graphOptions}/> : 
-                    time === 'quarter' ? 
-                        <Doughnut data={donutData} options={graphOptions}/> : 
-                    time === 'year' ? 
-                        <Doughnut data={donutData} options={graphOptions}/> :
-                    null :
-                null
-            }
-
-
+            { view === 'line' ? <Line data={formattedLineData} options={graphOptions}/> : <Doughnut data={formattedCircleData} options={graphOptions}/>}
             <div className="indicators">
                 <button className={view === "line" ? "indicator indicator--active" : "indicator"} data-view="line" onClick={e=> setView(e.target.dataset.view)}></button>
                 <button className={view === "doughnut" ? "indicator indicator--active" : "indicator"} data-view="doughnut" onClick={e=> setView(e.target.dataset.view)}></button>
@@ -144,26 +239,3 @@ export const Graph = ({data, variant, time, title}) => {
         </div>
     )
 }
-
-// REQUIREMENTS:
-// Time state in the parent component.
-// TimePeriodSelector in the parent component to control state.
-// JSON MUST BE FORMATTED CORRECTLY.
-// Import convertToDollars() from util
-
-// USAGE:
-// This Graph component is a responsive contanier for dymanic graphs.
-// Variants determine which style of graph will be displayed. The options are line and doughnut. 
-// This Component has 3 required arguments. 
-    // Data, the data to be displayed. More detail below. 
-    // Time, the time period to get data for. 
-        // Init a [time, setTime] state in the page component. Control the value with TimePeriodSelector component. Pass value to this component.
-    // Variant, the type of chart to be displayed. [bar || doughnut]
-
-// Data object 
-    // This data will be run through the formatData() function and broken down into objects that chartjs can use.
-    // {
-        // currentBalance: number,  /*this is the current total for whatever data is being displayed */
-        // dataPoints: { day:[{ label, value}], week: [{label, value}], month: [{label, value}], quarter:[{label, value}], year:[{label, value}]}
-    // }
-
