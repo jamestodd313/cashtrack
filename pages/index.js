@@ -13,7 +13,7 @@ export default function Home({accounts, profile}) {
   return (
     <>
       <Head>
-        <title>CashTrack - Track Your Cash</title>
+        <title>JBANK</title>
       </Head>
       <main>
 

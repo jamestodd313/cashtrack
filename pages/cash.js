@@ -14,7 +14,7 @@ export default function cash({profile, accounts}){
     return(
         <>
             <Head>
-                <title>CashTrack - Cash</title>
+                <title>JBANK - Cash Accounts</title>
             </Head>
             <Navbar active="cash"/>
 

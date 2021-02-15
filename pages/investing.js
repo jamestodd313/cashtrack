@@ -9,7 +9,7 @@ export default function investing({accounts}){
     return(
         <>
             <Head>
-                <title>CashTrack - Investing</title>
+                <title>JBANK - Investing</title>
             </Head>
                 <main>
                     { !accounts ?  'Something went wrong. Please try again.' : (
