@@ -21,16 +21,16 @@ main{
     @media screen and (min-width: 992px){
         margin-left: 80px;
         padding: 16px 48px;
-        column-gap: 24px;
-        grid-template-columns: repeat(4, 1fr);
+        column-gap: 40px;
+        grid-template-columns: repeat(6, 1fr);
         .graph-container{
-            grid-column: 1 / 5;
+            grid-column: 1 / 7;
         }
         .time-period-selector{
-            grid-column: 1 / 5;
+            grid-column: 1 / 7;
         }
         .table-section{
-            grid-column: span 1;
+            grid-column: span 2;
             height: auto;
         }
     }

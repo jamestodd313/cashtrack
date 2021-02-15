@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { BorderButton } from "../../buttons/BorderButton"
 import { TableRow } from "./TableRow"
 
-export const OverviewTable = ({tableData}) => {
+export const OverviewTable = ({data, acctType}) => {
     return (
         <table className="overview-table">
             <thead>
@@ -12,7 +12,31 @@ export const OverviewTable = ({tableData}) => {
                 </tr>
             </thead>
             <tbody>
-                {tableData.items ? tableData.items.map(row=> <TableRow key={`${row.item}-${Math.floor(Math.random() * 52387 * Math.floor(Math.random() * 23324))}`} transactions={row.transactions} item={row.item} value={row.value} change={row.change}/>) : null}
+
+                {!data ? 'loading...' : (
+                    acctType === 'checking' ? (
+                        <>
+                        <TableRow transactions={data.deposits.length} item={'Deposits'} value={data.deposits.reduce((a,b)=> a + b, 0)}/>
+                        <TableRow transactions={data.withdrawals.length} item={'Withdrawals'} value={data.withdrawals.reduce((a,b)=> a + b, 0)}/>
+                        <TableRow transactions={data.purchases.length} item={'Purchases'} value={data.purchases.reduce((a,b)=> a + b, 0)}/>
+                        <TableRow transactions={data.transfers.length} item={'Transfers'} value={data.transfers.reduce((a,b)=> a + b, 0)}/>
+                        </>
+                    ) : acctType === 'savings' ? (
+                        <>
+                        <TableRow transactions={data.deposits.length} item={'Deposits'} value={data.deposits.reduce((a,b)=> a + b, 0)}/>
+                        <TableRow transactions={data.withdrawals.length} item={'Withdrawals'} value={data.withdrawals.reduce((a,b)=> a + b, 0)}/>
+                        <TableRow transactions={data.interest.length === 0 ? '0%' : '0.22%'} item={'Interest'} value={data.interest.reduce((a,b)=> a + b, 0)}/>
+                        <TableRow transactions={data.transfers.length} item={'Transfers'} value={data.transfers.reduce((a,b)=> a + b, 0)}/>
+                        </>
+                    ) : acctType === 'investing' ? (
+                        <>
+                        <TableRow transactions={[]} item={'Market P/L'} value={data.pl}/>
+                        <TableRow transactions={data.dividends.length} item={'Dividends'} value={data.dividends.reduce((a,b)=> a + b, 0)}/>
+                        <TableRow transactions={data.deposits.length} item={'Deposits'} value={data.deposits.reduce((a,b)=> a + b, 0)}/>
+                        <TableRow transactions={data.withdrawals.length} item={'Withdrawals'} value={data.withdrawals.reduce((a,b)=> a + b, 0)}/>
+                        </>
+                    ) : "Something went wrong. Please try again."
+                )}
             </tbody>
             <tfoot>
                 <tr>

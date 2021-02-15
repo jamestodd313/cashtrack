@@ -3,7 +3,7 @@ import {useState} from 'react'
 import { Navbar } from "../components/navigation/Navbar";
 import {Graph} from '../components/data-display/graph/Graph'
 import { TimePeriodSelector } from "../components/filters/TimePeriodSelector";
-
+import {TableSection} from '../components/data-display/table/TableSection'
 export default function investing({accounts}){
     const [time, setTime] = useState('day')
     return(
@@ -16,11 +16,7 @@ export default function investing({accounts}){
                         <>
                         <Graph variant={'line'} data={{investing: accounts.accounts.investing}} time={time} title="Investments"/>
                         <TimePeriodSelector time={time} setTime={setTime}/>
-                        {/* map through data.accounts or something like that idk. youll find it */}
-                        {/* <TableSection title="Income" tableData={incomeData}/>
-                        <TableSection title="Spending" tableData={spendingData}/>
-                        <TableSection title="Saving" tableData={savingData}/>
-                        <TableSection title="Investing" tableData={investingData}/>  */}
+                        <TableSection title="Investing" tableData={accounts.accounts.investing} time={time}/> 
                         </>
                     )}
                 </main>

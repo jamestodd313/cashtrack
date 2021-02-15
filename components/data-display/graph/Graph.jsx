@@ -245,7 +245,6 @@ export const Graph = ({data, variant, time, title}) => {
     
     },[investingTransactions, savingsTransactions, checkingTransactions])
 
-    // useEffect(()=>{console.log(formattedLineData)},[formattedLineData])
 
 
 
@@ -293,7 +292,6 @@ export const Graph = ({data, variant, time, title}) => {
                 }
             }
             let totalStart = saveStart + checkStart + investStart
-            console.log({saveStart, checkStart, investStart})
             setValueChange(totalBalance - totalStart)
         } catch{
             return

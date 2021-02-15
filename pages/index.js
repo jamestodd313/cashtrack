@@ -23,23 +23,13 @@ export default function Home({accounts, profile}) {
             <>
             <Graph variant="line" data={accounts} time={time} title="Accounts Overview"/>
             <TimePeriodSelector time={time} setTime={setTime}/>
+            <TableSection title="Checking" tableData={accounts.checking} time={time}/>
+            <TableSection title="Saving" tableData={accounts.savings} time={time}/>
+            <TableSection title="Investing" tableData={accounts.investing} time={time}/>
             </>
 
           )
         }
-
-        {/* {
-          incomeData && spendingData && savingData && investingData && accountBalance ? (
-            <>
-            <Graph variant={'line'} data={accountBalance} time={time} title="Total Balance" lineData={"sfdlkjhasfghklbhlsv"} circleData={214356}/>
-            <TimePeriodSelector time={time} setTime={setTime}/>
-            <TableSection title="Income" tableData={incomeData} time={time}/>
-            <TableSection title="Spending" tableData={spendingData} time={time}/>
-            <TableSection title="Saving" tableData={savingData} time={time}/>
-            <TableSection title="Investing" tableData={investingData} time={time}/>
-            </>
-          ) : "Something went wrong. Please try again."
-        } */}
       </main>
       <Navbar active="home"/>
     </>

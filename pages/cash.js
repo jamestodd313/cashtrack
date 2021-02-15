@@ -24,10 +24,8 @@ export default function cash({profile, accounts}){
                     <Graph variant={'line'} data={{checking: accounts.checking, savings: accounts.savings}} time={time} title="Cash Accounts"/>
                     <TimePeriodSelector time={time} setTime={setTime}/>
                     {/* map through data.accounts or something like that idk. youll find it */}
-                    {/* <TableSection title="Income" tableData={incomeData}/>
-                    <TableSection title="Spending" tableData={spendingData}/>
-                    <TableSection title="Saving" tableData={savingData}/>
-                    <TableSection title="Investing" tableData={investingData}/>  */}
+                    <TableSection title="Checking" tableData={accounts.checking} time={time}/>
+                    <TableSection title="Savings" tableData={accounts.savings} time={time}/>
                     </>
                 )}
             </main>

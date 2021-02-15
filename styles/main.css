@@ -64,11 +64,13 @@ button, .button-text {
   font-weight: 900;
   text-transform: uppercase;
   color: #717eeb;
+  cursor: pointer;
 }
 
 .highlight {
   font-size: 20px;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .highlight--gain {
@@ -128,23 +130,23 @@ main {
   main {
     margin-left: 80px;
     padding: 16px 48px;
-    -webkit-column-gap: 24px;
-            column-gap: 24px;
-    -ms-grid-columns: (1fr)[4];
-        grid-template-columns: repeat(4, 1fr);
+    -webkit-column-gap: 40px;
+            column-gap: 40px;
+    -ms-grid-columns: (1fr)[6];
+        grid-template-columns: repeat(6, 1fr);
   }
   main .graph-container {
     -ms-grid-column: 1;
-    -ms-grid-column-span: 4;
-    grid-column: 1 / 5;
+    -ms-grid-column-span: 6;
+    grid-column: 1 / 7;
   }
   main .time-period-selector {
     -ms-grid-column: 1;
-    -ms-grid-column-span: 4;
-    grid-column: 1 / 5;
+    -ms-grid-column-span: 6;
+    grid-column: 1 / 7;
   }
   main .table-section {
-    grid-column: span 1;
+    grid-column: span 2;
     height: auto;
   }
 }
@@ -363,6 +365,7 @@ main::after {
   outline: none;
   margin: 8px;
   background: #757575;
+  cursor: pointer;
 }
 
 .graph-container .indicators .indicator--active {

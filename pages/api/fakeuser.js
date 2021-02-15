@@ -6,6 +6,7 @@ export default function fakeuser(req, res){
         accounts: {
             checking: {
                 open: true,
+                type: 'checking',
                 accountNumber: 91827465,
                 currentBalance: 2304.27,
                 transactions: {
@@ -327,6 +328,7 @@ export default function fakeuser(req, res){
             },
             savings: {
                 open: true,
+                type: 'savings',
                 accountNumber: 19283746,
                 currentBalance: 23456.78,
                 transactions: {
@@ -562,6 +564,7 @@ export default function fakeuser(req, res){
             },
             investing: {
                 open: true,
+                type: 'investing',
                 accountNumber: 62946184,
                 currentBalance: 16909.05,
                 transactions: {
@@ -570,186 +573,248 @@ export default function fakeuser(req, res){
                             date: new Date('01/01/2021').toDateString(),
                             pl: 0.00,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 13958.30,
                         },
                         _2: {
                             date: new Date('01/02/2021').toDateString(),
                             pl: 0,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 13958.30,
                         },
                         _3: {
                             date: new Date('01/03/2021').toDateString(),
                             pl: 0,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 13958.30,
                         },
                         _4: {
                             date: new Date('01/04/2021').toDateString(),
                             pl: 195.33,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 14153.63,
                         },
                         _5: {
                             date: new Date('01/05/2021').toDateString(),
                             pl: -67.23,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 14153.63 - 67.23,
                         },
                         _6: {
                             date: new Date('01/06/2021').toDateString(),
                             pl: 205.78,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 14292.18,
                         },
                         _7: {
                             date: new Date('01/07/2021').toDateString(),
                             pl: 171.99,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 14292.18 + 171.99,
                         },
                         _8: {
                             date: new Date('01/08/2021').toDateString(),
                             pl: 284.67,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 14748.84
                         },
                         _9: {
                             date: new Date('01/09/2021').toDateString(),
                             pl: 0,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 14748.84
                         },
                         _10: {
                             date: new Date('01/10/2021').toDateString(),
                             pl: 0,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 14748.84
                         },
                         _11: {
                             date: new Date('01/11/2021').toDateString(),
                             pl: 89.45,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 14748.84 + 89.45
                         },
                         _12: {
                             date: new Date('01/12/2021').toDateString(),
                             pl: 107.95,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 14748.84 + 89.45 + 108.95
                         },
                         _13: {
                             date: new Date('01/13/2021').toDateString(),
                             pl: 403.12,
-                            dividends: [{from: 'F', amount: 3.00}],
+                            dividends: [{from: 'F', amount: 31.00}],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 14748.84 + 89.45 + 108.95 + 403.12 + 3
                         },
                         _14: {
                             date: new Date('01/14/2021').toDateString(),
                             pl: -227.36,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 15353.36 - 227.36 
                         },
                         _15: {
                             date: new Date('01/15/2021').toDateString(),
                             pl: 222.22,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 15348.22
                         },
                         _16: {
                             date: new Date('01/16/2021').toDateString(),
                             pl: 0.00,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 15348.22
                         },
                         _17: {
                             date: new Date('01/17/2021').toDateString(),
                             pl: 0.00,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 15348.22
                         },
                         _18: {
                             date: new Date('01/18/2021').toDateString(),
                             pl: 234.56,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 15348.22 + 234.56
                         },
                         _19: {
                             date: new Date('01/19/2021').toDateString(),
                             pl: -54.32,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 15348.22 + 234.56 - 54.32
                         },
                         _20: {
                             date: new Date('01/20/2021').toDateString(),
                             pl: 313.93,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 15348.22 + 234.56 - 54.32 + 313.93
                         },
                         _21: {
                             date: new Date('01/21/2021').toDateString(),
                             pl: 378.42,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 15348.22 + 234.56 - 54.32 + 313.93 + 378.42
                         },
                         _22: {
                             date: new Date('01/22/2021').toDateString(),
                             pl: -123.45,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 16097.36
                         },
                         _23: {
                             date: new Date('01/23/2021').toDateString(),
                             pl: 0,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 16097.36
                         },
                         _24: {
                             date: new Date('01/24/2021').toDateString(),
                             pl: 0,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 16097.36
                         },
                         _25: {
                             date: new Date('01/25/2021').toDateString(),
                             pl: 92.56,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 16097.36 + 92.56
                         },
                         _26: {
                             date: new Date('01/26/2021').toDateString(),
                             pl: 420.69,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 16097.36 + 92.56 + 420.69
                         },
                         _27: {
                             date: new Date('01/27/2021').toDateString(),
                             pl: -222.10,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 16388.51
                         },
                         _28: {
                             date: new Date('01/28/2021').toDateString(),
                             pl: 199.45,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 16388.51 + 199.45
                         },
                         _29: {
                             date: new Date('01/29/2021').toDateString(),
                             pl: 321.09,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 16909.05
                         },
                         _30: {
                             date: new Date('01/30/2021').toDateString(),
                             pl: 0,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 16909.05
                         },
                         _31: {
                             date: new Date('01/31/2021').toDateString(),
                             pl: 0,
                             dividends: [],
+                            deposits: [],
+                            withdrawals: [],
                             runningBalance: 16909.05
                         },
 
