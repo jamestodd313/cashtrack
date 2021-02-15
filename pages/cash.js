@@ -34,7 +34,7 @@ export default function cash({profile, accounts}){
 }
 
 cash.getInitialProps = async ctx=>{
-    const apiCall = await fetch('http://localhost:3000/api/fakeuser')
+    const apiCall = await fetch('https://jbank.vercel.app//api/fakeuser')
     const apiResponse = await apiCall.json()
     const {profile, accounts} = await apiResponse
     return {profile, accounts}
