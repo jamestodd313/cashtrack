@@ -23,9 +23,9 @@ export default function Home({accounts, profile}) {
             <>
             <Graph variant="line" data={accounts} time={time} title="Accounts Overview"/>
             <TimePeriodSelector time={time} setTime={setTime}/>
-            <TableSection title="Checking" tableData={accounts.checking} time={time}/>
-            <TableSection title="Saving" tableData={accounts.savings} time={time}/>
-            <TableSection title="Investing" tableData={accounts.investing} time={time}/>
+              <TableSection title="Checking" tableData={accounts.checking} time={time}/>
+              <TableSection title="Saving" tableData={accounts.savings} time={time}/>
+              <TableSection title="Investing" tableData={accounts.investing} time={time}/>
             </>
 
           )
