@@ -40,26 +40,3 @@ cash.getInitialProps = async ctx=>{
     return {profile, accounts}
 }
 
-
-// make an api call that returns an array of bank/investment accounts
-// use accounts data to generate 2 objects: graphData and tableData
-
-
-// line data takes in relevant account balances (all balances for home, cash accounts for cash, etc.), sets intervals and finds the change between the first and last interval.
-    // for example: 
-
-    
-    // if you're looking at a line graph of cash accounts for the last quarter
-        // find the last transaction for each week for the last 3 months and the current month
-        // each week's ending balance will be a datapoint on the line graph
-        // the difference between the first and last week of the time quarter will be the change
-    // if you're looking at a donut graph of cash accounts
-        // the balance of each account will be it's own piece of the donut
-        // show the distribution of funds (this doesn't change based on the time period)
-
-    
-
-
-
-// now we have a line graph that displays balance history and a donut graph that displays account balances
-
