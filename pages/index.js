@@ -13,7 +13,7 @@ export default function Home({accounts, profile}) {
   return (
     <>
       <Head>
-        <title>JBANK</title>
+        <title>JBank - All Accounts</title>
       </Head>
       <main>
 

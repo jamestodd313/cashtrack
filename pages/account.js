@@ -5,7 +5,7 @@ export default function account(){
     return (
         <>
         <Head>
-            <title>CashTrack - Settings</title>
+            <title>JBank - Settings</title>
         </Head>
         <main>
             
